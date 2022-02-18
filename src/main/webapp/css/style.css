@@ -132,6 +132,10 @@ select {
     height: 30px;
 }
 
+pre {
+    font-family: "Hiragino Kaku Gothic Pro",Meiryo,"MS PGothic",Helvetica,Arial,sans-serif;
+}
+
 #flush_success {
     width: 100%;
     padding-top: 28px;
