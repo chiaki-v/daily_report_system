@@ -42,19 +42,27 @@
                  </tbody>
         </table>
 
-                <div>
-                    <p>コメント</p>
-                    <form method="POST" action="<c:url value='?action=${actRep}&command=${commCmt}&id=${report.id}' />">
-                    <textarea name="${AttributeConst.REP_COMMENT.getValue()}" rows="10" cols="50">${report.comment}</textarea>
-                    <!--<input type="hidden" name="${AttributeConst.TOKEN.getValue()}" value="${_token}" />-->
-                    <button type="submit">コメントの登録</button>
-                    </form>
-               </div>
+        <div>
+             <p>コメント</p>
 
-               <div>
-                    <span><input type="radio" name="example" value="0">保留</span>
-                    <span><input type="radio" name="example" value="1">承認</span>
-               </div>
+             <c:if test="${sessionScope.login_employee != null}">
+                  <c:if test="${sessionScope.login_employee.adminFlag == AttributeConst.ROLE_ADMIN.getIntegerValue()}">
+                        <form method="POST" action="<c:url value='?action=${actRep}&command=${commCmt}&id=${report.id}' />">
+                        <textarea name="${AttributeConst.REP_COMMENT.getValue()}" rows="10" cols="50">${report.comment}</textarea>
+                        <!--<input type="hidden" name="${AttributeConst.TOKEN.getValue()}" value="${_token}" />-->
+                        <button type="submit">コメントの登録</button>
+                        </form>
+                       <div>
+                            <span><input type="radio" name="example" value="0">保留</span>
+                            <span><input type="radio" name="example" value="1">承認</span>
+                       </div>
+                  </c:if>
+            </c:if>
+         </div>
+
+         <c:if test="${sessionScope.login_employee.adminFlag != AttributeConst.ROLE_ADMIN.getIntegerValue()}">
+         <div>${report.comment}</div>
+         </c:if>
 
 
         <c:if test="${sessionScope.login_employee.id == report.employee.id}">
