@@ -24,6 +24,7 @@ public interface JpaConst {
     String EMP_COL_UPDATED_AT = "updated_at"; //更新日時
     String EMP_COL_DELETE_FLAG = "delete_flag"; //削除フラグ
 
+    int ROLE_SYSTEM_ADMIN = 9; //システム管理者
     int ROLE_ADMIN = 1; //管理者権限ON(管理者)
     int ROLE_GENERAL = 0; //管理者権限OFF(一般)
     int EMP_DEL_TRUE = 1; //削除フラグON(削除済み)
@@ -39,6 +40,9 @@ public interface JpaConst {
     String REP_COL_CONTENT = "content"; //日報の内容
     String REP_COL_CREATED_AT = "created_at"; //登録日時
     String REP_COL_UPDATED_AT = "updated_at"; //更新日時
+    String REP_COL_COMMENT = "comment"; //上長コメント
+    String REP_COL_CONFIRM_FLAG  = "confirm_flag"; //上長承認フラグ
+
 
     //Entity名
     String ENTITY_EMP = "employee"; //従業員

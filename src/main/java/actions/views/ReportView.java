@@ -52,4 +52,16 @@ public class ReportView {
      * 更新日時
      */
     private LocalDateTime updatedAt;
+
+    /**
+     * 上長のコメント
+     */
+    private String comment;
+
+    /**
+     * 承認
+     */
+
+    private Integer confirm_flag;
+
 }

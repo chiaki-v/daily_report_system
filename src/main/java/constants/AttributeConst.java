@@ -35,6 +35,7 @@ public enum AttributeConst {
     EMP_ADMIN_FLG("admin_flag"),
 
     //管理者フラグ
+    ROLE_SYSTEM_ADMIN(9),
     ROLE_ADMIN(1),
     ROLE_GENERAL(0),
 
@@ -49,7 +50,9 @@ public enum AttributeConst {
     REP_ID("id"),
     REP_DATE("report_date"),
     REP_TITLE("title"),
-    REP_CONTENT("content");
+    REP_CONTENT("content"),
+    REP_COMMENT("comment"), //管理者コメント
+    REP_CONFIRM_FLAG("confirm_flag"); //管理者承認フラグ
 
     private final String text;
     private final Integer i;

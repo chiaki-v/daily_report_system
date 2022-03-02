@@ -94,4 +94,17 @@ public class Report {
     @Column(name = JpaConst.REP_COL_UPDATED_AT, nullable = false)
     private LocalDateTime updatedAt;
 
+    /**
+     * 上長のコメント
+     */
+    @Column(name = JpaConst.REP_COL_COMMENT)
+    private String comment;
+
+    /**
+     * 承認
+     */
+    @Column(name = JpaConst.REP_COL_CONFIRM_FLAG)
+    private Integer confirm_flag;
+
+
 }
