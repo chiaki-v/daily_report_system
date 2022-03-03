@@ -42,26 +42,27 @@
                  </tbody>
         </table>
 
-        <div>
-             <p>コメント</p>
 
-             <c:if test="${sessionScope.login_employee != null}">
-                  <c:if test="${sessionScope.login_employee.adminFlag == AttributeConst.ROLE_ADMIN.getIntegerValue()}">
+             <h3>コメント</h3>
+                <div>
+                    <c:if test="${sessionScope.login_employee != null}">
+                        <c:if test="${sessionScope.login_employee.adminFlag == AttributeConst.ROLE_ADMIN.getIntegerValue()}">
                         <form method="POST" action="<c:url value='?action=${actRep}&command=${commCmt}&id=${report.id}' />">
                         <textarea name="${AttributeConst.REP_COMMENT.getValue()}" rows="10" cols="50">${report.comment}</textarea>
-                        <!--<input type="hidden" name="${AttributeConst.TOKEN.getValue()}" value="${_token}" />-->
-                        <button type="submit">コメントの登録</button>
+
+                           <div id="confirm_flag">
+                                <span><input type="radio" name="confirm_flag" value="0">保留</span>
+                                <span style="margin-left:1em;"><input type="radio" name="confirm_flag" value="1">承認</span>
+                           </div>
+
+                           <button type="submit">登録</button>
                         </form>
-                       <div>
-                            <span><input type="radio" name="example" value="0">保留</span>
-                            <span><input type="radio" name="example" value="1">承認</span>
-                       </div>
-                  </c:if>
-            </c:if>
-         </div>
+                        </c:if>
+                    </c:if>
+                </div>
 
          <c:if test="${sessionScope.login_employee.adminFlag != AttributeConst.ROLE_ADMIN.getIntegerValue()}">
-         <div>${report.comment}</div>
+         <div id="comment">${report.comment}</div>
          </c:if>
 
 

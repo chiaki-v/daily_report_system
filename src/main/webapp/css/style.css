@@ -53,6 +53,8 @@ h2 {
 
 h3 {
     font-size: larger;
+    margin-top: 30px;
+    margin-bottom: 15px;
 }
 
 li {
@@ -125,6 +127,18 @@ tr.row0 {
 td {
     width: 66%;
     padding: 10px 2%;
+}
+
+#comment , textarea {
+    width: 96%;
+    border: 1px solid #cccccc;
+    height:5em;
+    padding: 10px 2%;
+}
+
+#confirm_flag{
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 button {
