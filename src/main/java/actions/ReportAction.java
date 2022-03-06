@@ -246,7 +246,7 @@ public class ReportAction extends ActionBase {
 
 
     /**
-     * コメントを入力する
+     * コメントと承認フラグを入力する
      * @throws ServletException
      * @throws IOException
      */
@@ -260,6 +260,7 @@ public class ReportAction extends ActionBase {
 
             //入力されたコメント内容を設定する
             rv.setComment(getRequestParam(AttributeConst.REP_COMMENT));
+            rv.setConfirm_flag(Integer.parseInt(getRequestParam(AttributeConst.REP_CONFIRM_FLAG)));
 
             //日報データを更新する
             List<String> errors = service.update(rv);

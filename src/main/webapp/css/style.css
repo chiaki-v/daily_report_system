@@ -129,11 +129,19 @@ td {
     padding: 10px 2%;
 }
 
-#comment , textarea {
+textarea {
     width: 96%;
     border: 1px solid #cccccc;
     height:5em;
     padding: 10px 2%;
+}
+
+#comment {
+    width: 96%;
+    border: 1px solid #cccccc;
+    height:5em;
+    padding: 10px 2%;
+    background-color: #f2f2f2;
 }
 
 #confirm_flag{
@@ -144,6 +152,7 @@ td {
 button {
     font-size: 14px;
     padding: 5px 10px;
+    margin:15px 0;
 }
 
 select {
@@ -152,6 +161,11 @@ select {
 
 pre {
     font-family: "Hiragino Kaku Gothic Pro",Meiryo,"MS PGothic",Helvetica,Arial,sans-serif;
+}
+
+#pagination{
+    text-align: center;
+    margin:15px 0;
 }
 
 #flush_success {
@@ -176,4 +190,6 @@ pre {
 
 #footer {
     text-align: center;
+    font-size: smaller;
+    margin-top:15px;
 }

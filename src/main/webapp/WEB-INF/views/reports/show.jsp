@@ -48,12 +48,25 @@
                     <c:if test="${sessionScope.login_employee != null}">
                         <c:if test="${sessionScope.login_employee.adminFlag == AttributeConst.ROLE_ADMIN.getIntegerValue()}">
                         <form method="POST" action="<c:url value='?action=${actRep}&command=${commCmt}&id=${report.id}' />">
-                        <textarea name="${AttributeConst.REP_COMMENT.getValue()}" rows="10" cols="50">${report.comment}</textarea>
 
-                           <div id="confirm_flag">
-                                <span><input type="radio" name="confirm_flag" value="0">保留</span>
-                                <span style="margin-left:1em;"><input type="radio" name="confirm_flag" value="1">承認</span>
+                           <div class="confirm_flag">
+                           <c:choose>
+                           <c:when test="${report.confirm_flag == 0}">
+                                <span><input type="radio" name="${AttributeConst.REP_CONFIRM_FLAG.getValue()}" value="0" checked>保留</span>
+                                <span style="margin-left:1em;"><input type="radio" name="${AttributeConst.REP_CONFIRM_FLAG.getValue()}" value="1">承認</span>
+                           </c:when>
+                           <c:when test="${report.confirm_flag == 1}">
+                                <span><input type="radio" name="${AttributeConst.REP_CONFIRM_FLAG.getValue()}" value="0">保留</span>
+                                <span style="margin-left:1em;"><input type="radio" name="${AttributeConst.REP_CONFIRM_FLAG.getValue()}" value="1" checked>承認</span>
+                           </c:when>
+                           <c:otherwise>
+                                <span><input type="radio" name="${AttributeConst.REP_CONFIRM_FLAG.getValue()}" value="0">保留</span>
+                                <span style="margin-left:1em;"><input type="radio" name="${AttributeConst.REP_CONFIRM_FLAG.getValue()}" value="1" checked>承認</span>
+                           </c:otherwise>
+                           </c:choose>
                            </div>
+
+                           <textarea name="${AttributeConst.REP_COMMENT.getValue()}" rows="10" cols="50">${report.comment}</textarea>
 
                            <button type="submit">登録</button>
                         </form>
@@ -62,7 +75,22 @@
                 </div>
 
          <c:if test="${sessionScope.login_employee.adminFlag != AttributeConst.ROLE_ADMIN.getIntegerValue()}">
-         <div id="comment">${report.comment}</div>
+
+            <div class="confirm_flag">
+              <c:choose>
+              <c:when test="${report.confirm_flag == 0}">
+                   <p>保留中</p>
+              </c:when>
+              <c:when test="${report.confirm_flag == 1}">
+                    <p>承認済</p>
+              </c:when>
+              <c:otherwise>
+                    <p>未確認</p>
+              </c:otherwise>
+              </c:choose>
+             </div>
+
+             <div id="comment">${report.comment}</div>
          </c:if>
 
 
