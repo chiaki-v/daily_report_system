@@ -42,8 +42,9 @@
             </tbody>
         </table>
 
+        <p><a href="<c:url value='?action=${actRep}&command=${commNew}' />">新規日報の登録</a></p>
+
         <div id="pagination">
-            （全 ${reports_count} 件）<br />
             <c:forEach var="i" begin="1" end="${((reports_count - 1) / maxRow) + 1}" step="1">
                 <c:choose>
                     <c:when test="${i == page}">
@@ -54,8 +55,8 @@
                     </c:otherwise>
                 </c:choose>
             </c:forEach>
+           <br /> （全 ${reports_count} 件）
         </div>
-        <p><a href="<c:url value='?action=${actRep}&command=${commNew}' />">新規日報の登録</a></p>
 
     </c:param>
 </c:import>

@@ -45,7 +45,6 @@
         <p><a href="<c:url value='?action=${actEmp}&command=${commNew}' />">新規従業員の登録</a></p>
 
         <div id="pagination">
-            （全 ${employees_count} 件）<br />
             <c:forEach var="i" begin="1" end="${((employees_count - 1) / maxRow) + 1}" step="1">
                 <c:choose>
                     <c:when test="${i == page}">
@@ -56,6 +55,7 @@
                     </c:otherwise>
                 </c:choose>
             </c:forEach>
+            <br /> （全 ${employees_count} 件）
         </div>
 
 
