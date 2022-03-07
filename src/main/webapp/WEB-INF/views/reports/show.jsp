@@ -43,56 +43,53 @@
         </table>
 
 
-             <h3>コメント</h3>
-                <div>
-                    <c:if test="${sessionScope.login_employee != null}">
-                        <c:if test="${sessionScope.login_employee.adminFlag == AttributeConst.ROLE_ADMIN.getIntegerValue()}">
-                        <form method="POST" action="<c:url value='?action=${actRep}&command=${commCmt}&id=${report.id}' />">
+       <h3>コメント</h3>
+         <div>
+               <c:if test="${sessionScope.login_employee != null}">
+                  <c:choose>
+                      <c:when  test="${sessionScope.login_employee.adminFlag == AttributeConst.ROLE_ADMIN.getIntegerValue() and sessionScope.login_employee.id != report.employee.id}">
+                            <form method="POST" action="<c:url value='?action=${actRep}&command=${commCmt}&id=${report.id}' />">
 
-                           <div class="confirm_flag">
-                           <c:choose>
-                           <c:when test="${report.confirm_flag == 0}">
-                                <span><input type="radio" name="${AttributeConst.REP_CONFIRM_FLAG.getValue()}" value="0" checked>保留</span>
-                                <span style="margin-left:1em;"><input type="radio" name="${AttributeConst.REP_CONFIRM_FLAG.getValue()}" value="1">承認</span>
-                           </c:when>
-                           <c:when test="${report.confirm_flag == 1}">
-                                <span><input type="radio" name="${AttributeConst.REP_CONFIRM_FLAG.getValue()}" value="0">保留</span>
-                                <span style="margin-left:1em;"><input type="radio" name="${AttributeConst.REP_CONFIRM_FLAG.getValue()}" value="1" checked>承認</span>
-                           </c:when>
-                           <c:otherwise>
-                                <span><input type="radio" name="${AttributeConst.REP_CONFIRM_FLAG.getValue()}" value="0">保留</span>
-                                <span style="margin-left:1em;"><input type="radio" name="${AttributeConst.REP_CONFIRM_FLAG.getValue()}" value="1" checked>承認</span>
-                           </c:otherwise>
-                           </c:choose>
-                           </div>
+                                <div class="confirm_flag">
+                                   <c:if test="${report.confirm_flag == 0}">
+                                        <span><input type="radio" name="${AttributeConst.REP_CONFIRM_FLAG.getValue()}" value="0" checked>保留</span>
+                                        <span style="margin-left:1em;"><input type="radio" name="${AttributeConst.REP_CONFIRM_FLAG.getValue()}" value="1">承認</span>
+                                   </c:if>
+                                   <c:if test="${report.confirm_flag == 1}">
+                                        <span><input type="radio" name="${AttributeConst.REP_CONFIRM_FLAG.getValue()}" value="0">保留</span>
+                                        <span style="margin-left:1em;"><input type="radio" name="${AttributeConst.REP_CONFIRM_FLAG.getValue()}" value="1" checked>承認</span>
+                                   </c:if>
+                                   <c:if test="${report.confirm_flag == null}">
+                                        <span><input type="radio" name="${AttributeConst.REP_CONFIRM_FLAG.getValue()}" value="0" checked>保留</span>
+                                        <span style="margin-left:1em;"><input type="radio" name="${AttributeConst.REP_CONFIRM_FLAG.getValue()}" value="1">承認</span>
+                                   </c:if>
+                                </div>
 
-                           <textarea name="${AttributeConst.REP_COMMENT.getValue()}" rows="10" cols="50">${report.comment}</textarea>
-                           <br>
+                                   <textarea name="${AttributeConst.REP_COMMENT.getValue()}" rows="10" cols="50">${report.comment}</textarea>
+                                    <br>
+                                    <button type="submit">登録</button>
+                             </form>
+                     </c:when>
+                     <c:otherwise>
 
-                           <button type="submit">登録</button>
-                        </form>
-                        </c:if>
-                    </c:if>
-                </div>
+                            <div class="confirm_flag">
+                                  <c:if test="${report.confirm_flag == 0}">
+                                       <p>保留中</p>
+                                  </c:if>
+                                  <c:if test="${report.confirm_flag == 1}">
+                                        <p>承認済</p>
+                                  </c:if>
+                                  <c:if test="${report.confirm_flag == null}">
+                                        <p>未確認</p>
+                                  </c:if>
+                            </div>
+                            <div id="comment">${report.comment}</div>
 
-         <c:if test="${sessionScope.login_employee.adminFlag != AttributeConst.ROLE_ADMIN.getIntegerValue()}">
+                      </c:otherwise>
+                      </c:choose>
+               </c:if>
+        </div>
 
-            <div class="confirm_flag">
-              <c:choose>
-              <c:when test="${report.confirm_flag == 0}">
-                   <p>保留中</p>
-              </c:when>
-              <c:when test="${report.confirm_flag == 1}">
-                    <p>承認済</p>
-              </c:when>
-              <c:otherwise>
-                    <p>未確認</p>
-              </c:otherwise>
-              </c:choose>
-             </div>
-
-             <div id="comment">${report.comment}</div>
-         </c:if>
 
 
         <c:if test="${sessionScope.login_employee.id == report.employee.id}">
