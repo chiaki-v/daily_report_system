@@ -68,6 +68,13 @@ p {
     margin-bottom: 15px;
 }
 
+.report_none{
+    font-size: larger;
+    padding-left:1em;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
 a {
     text-decoration: none;
     color: #24738e;
