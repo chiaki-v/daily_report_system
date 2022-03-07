@@ -67,6 +67,7 @@
                            </div>
 
                            <textarea name="${AttributeConst.REP_COMMENT.getValue()}" rows="10" cols="50">${report.comment}</textarea>
+                           <br>
 
                            <button type="submit">登録</button>
                         </form>

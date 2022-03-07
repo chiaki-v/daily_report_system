@@ -136,9 +136,9 @@ td {
 }
 
 textarea {
-    width: 96%;
+    width: 60%;
     border: 1px solid #cccccc;
-    height:5em;
+    height:10em;
     padding: 10px 2%;
     margin:15px 0;
 }
